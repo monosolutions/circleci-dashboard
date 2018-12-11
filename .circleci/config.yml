@@ -121,10 +121,10 @@ workflows:
       - build:
           requires:
             - lint
-      - tu:
+      - unit-tests:
           requires:
             - build
-      - e2e:
+      - end-to-end-tests:
           requires:
             - build
       - deploy-github:
