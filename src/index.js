@@ -4,7 +4,6 @@ import './index.css';
 //import App from './App';
 import ErrorBoundary from './ErrorBoundary';
 import Dashboard from './Dashboard';
-import Tile from './Tile';
 import * as serviceWorker from './serviceWorker';
 
 

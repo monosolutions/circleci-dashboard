@@ -59,6 +59,7 @@ class Dashboard extends React.Component {
           "url": url,
           "reponame": reponame,
           "branch": branch,
+          "build:num": build_num,
           "date": date,
         });
       }
