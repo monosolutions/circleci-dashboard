@@ -120,7 +120,7 @@ workflows:
             - prepare
       - build:
           requires:
-            - lint
+            - prepare
       - unit-tests:
           requires:
             - build
