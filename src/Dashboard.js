@@ -1,6 +1,7 @@
 //import React, { Component } from 'react';
 import React from 'react';
 import './dashboard.css';
+import ErrorBoundary from './ErrorBoundary';
 import DoRequest from './CircleCI'
 import Tile from './Tile'
 
@@ -52,22 +53,20 @@ class Dashboard extends React.Component {
         let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/" + build.build_num;
         let reponame = repo.reponame
         let branch = k;
-        let build_num = build.build_num;
         let date = build.added_at;
         temp.push({
-          "key": key,
-          "url": url,
-          "reponame": reponame,
-          "branch": branch,
-          "build:num": build_num,
-          "date": date,
+          key: key,
+          url: url,
+          reponame: reponame,
+          branch: branch,
+          date: date,
         });
       }
       return temp;
     });
     mappedrepos = mappedrepos.flat(1);
     mappedrepos.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-    return mappedrepos.map((t) => <Tile key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
+    return mappedrepos.map((t) => <ErrorBoundary><Tile key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} /></ErrorBoundary>);
   }
 
   render() {
