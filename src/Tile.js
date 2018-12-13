@@ -14,7 +14,7 @@ class Tile extends React.Component {
       url: props.url,
       build_num: props.build_num,
       date: props.date,
-      data: []
+      data: null
     }
   }
 
@@ -35,6 +35,9 @@ class Tile extends React.Component {
   }
 
   render() {
+    if (this.state.data === null) {
+      return null;
+    }
     let from = moment(this.state.data.stop_time).fromNow();
     let tileClass = classNames({
       'tile': true,

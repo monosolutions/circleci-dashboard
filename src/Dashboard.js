@@ -1,7 +1,6 @@
 //import React, { Component } from 'react';
 import React from 'react';
 import './dashboard.css';
-import ErrorBoundary from './ErrorBoundary';
 import DoRequest from './CircleCI'
 import Tile from './Tile'
 
@@ -9,7 +8,7 @@ import Tile from './Tile'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: []};
+    this.state = {data: null};
   }
 
 	componentDidMount() {
@@ -28,8 +27,7 @@ class Dashboard extends React.Component {
     });
   }
 
-	fetchAndSortTiles() {
-    //console.log([1, 2, 3, 4].flatMap(x => [x * 2]));
+	getSortedTiles() {
   	const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
     let mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
@@ -64,11 +62,16 @@ class Dashboard extends React.Component {
     });
     mappedrepos = mappedrepos.flat(1);
     mappedrepos.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-    return mappedrepos.map((t) => <ErrorBoundary><Tile key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} /></ErrorBoundary>);
+    return mappedrepos.map((t) => <Tile key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
   }
 
   render() {
-    let tiles = this.fetchAndSortTiles();
+    if (this.state.data === null) {
+      return (
+        <h2>No data! (Wrong CircleCI token?)</h2>
+      );
+    }
+    let tiles = this.getSortedTiles();
     return (
       <div className="tiles">
         {tiles}
