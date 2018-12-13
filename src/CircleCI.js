@@ -1,10 +1,8 @@
-let token = localStorage.getItem('circle_ci_token');
-
 let circleci_url = "https://circleci.com/api/v1.1/";
-let circleci_token = "?circle-token=" + token;
+let circleci_token = "?circle-token=";
 
-function DoRequest(url) {
-  return fetch(circleci_url + url + circleci_token, {
+function DoRequest(url, token) {
+  return fetch(circleci_url + url + circleci_token + token, {
     method: 'get'
   }).then((r) => {
   	if (!r.ok) {

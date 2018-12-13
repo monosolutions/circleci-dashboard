@@ -8,7 +8,28 @@ import Tile from './Tile'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: null};
+    this.state = {
+      token: this.getToken(),
+      data: null
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  getToken() {
+    let token = localStorage.getItem('circle_ci_token');
+    return token != null ? token : '';
+  }
+
+  handleChange(event) {
+    this.setState({ token: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    localStorage.setItem('circle_ci_token', this.state.token);
+    this.fetch();
   }
 
 	componentDidMount() {
@@ -22,7 +43,7 @@ class Dashboard extends React.Component {
   }
 
 	fetch() {
-    DoRequest("projects").then((d) => {
+    DoRequest("projects", this.state.token).then((d) => {
       this.setState({data: d});
     });
   }
@@ -62,13 +83,21 @@ class Dashboard extends React.Component {
     });
     mappedrepos = mappedrepos.flat(1);
     mappedrepos.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-    return mappedrepos.map((t) => <Tile key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
+    return mappedrepos.map((t) => <Tile token={this.state.token} key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
   }
 
   render() {
     if (this.state.data === null) {
       return (
-        <h2>No data! (Wrong CircleCI token?)</h2>
+        <div className="token">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              CircleCI token: 
+              <input type="text" value={this.state.token} onChange={this.handleChange} size="100"/>
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       );
     }
     let tiles = this.getSortedTiles();

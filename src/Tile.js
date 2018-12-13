@@ -9,6 +9,7 @@ class Tile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      token: props.token,
       reponame: props.reponame,
       branch: decodeURIComponent(props.branch),
       url: props.url,
@@ -29,7 +30,7 @@ class Tile extends React.Component {
   }
 
   fetch() {
-    DoRequest(this.state.url).then((d) => {
+    DoRequest(this.state.url, this.state.token).then((d) => {
       this.setState({data: d});
     });
   }
