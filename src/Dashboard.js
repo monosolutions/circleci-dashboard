@@ -31,9 +31,7 @@ class Dashboard extends React.Component {
 	fetchAndSortTiles() {
     //console.log([1, 2, 3, 4].flatMap(x => [x * 2]));
   	const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
-    let repodata = this.state.data
-    console.log(repodata.toString)
-    let mappedrepos = repodata.flatMap((repo) => {
+    let mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
       for (let k in repo.branches) {
         if (k.substring(0, 7) === 'feature') {
