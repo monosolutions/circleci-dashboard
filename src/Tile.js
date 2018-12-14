@@ -2,7 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
-//import Gravatar from 'gravatar';
+import Gravatar from 'gravatar';
 import DoRequest from './CircleCI'
 
 class Tile extends React.Component {
@@ -40,6 +40,7 @@ class Tile extends React.Component {
       return null;
     }
     let from = moment(this.state.data.stop_time).fromNow();
+    let gravatar = Gravatar.url(this.state.data.author_email, {s: '100'});
     let tileClass = classNames({
       'tile': true,
       'success': this.state.data.outcome === 'success',
@@ -53,6 +54,7 @@ class Tile extends React.Component {
         <h1>{this.state.reponame}</h1>
         <div className="branch"><span>{this.state.branch}</span></div>
         <div className="build">Build #{this.state.data.build_num}</div>
+        <div className="email"><img src={gravatar} alt={this.state.data.author_email} width="75" /></div>
         <div className="author">{this.state.data.author_name}</div>
 
         <h2>{this.state.data.status}</h2>
