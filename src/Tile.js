@@ -40,7 +40,12 @@ class Tile extends React.Component {
       return null;
     }
     let from = moment(this.state.data.stop_time).fromNow();
-    let gravatar = Gravatar.url(this.state.data.author_email, {s: '100'});
+    let avatar = Gravatar.url(this.state.data.author_email, {s: '100'});
+    let authorName = this.state.data.author_name;
+    if (this.state.data.user && this.state.data.user.is_user) {
+      avatar = this.state.data.user.avatar_url;
+      authorName = this.state.data.user.name ? this.state.data.user.name : this.state.data.user.login;
+    }
     let tileClass = classNames({
       'tile': true,
       'success': this.state.data.outcome === 'success',
@@ -54,8 +59,8 @@ class Tile extends React.Component {
         <h1>{this.state.reponame}</h1>
         <div className="branch"><span>{this.state.branch}</span></div>
         <div className="build">Build #{this.state.data.build_num}</div>
-        <div className="email"><img src={gravatar} alt={this.state.data.author_email} width="75" /></div>
-        <div className="author">{this.state.data.author_name}</div>
+        <div className="email"><img src={avatar} alt={this.state.data.author_email} width="75" /></div>
+        <div className="author">{authorName}</div>
 
         <h2>{this.state.data.status}</h2>
         <div className="date">{from}</div>
