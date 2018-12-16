@@ -59,7 +59,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - deploy:
+      - run:
           name: Deploy to GitHub Pages
           command: |
               set -e
@@ -97,18 +97,6 @@ jobs:
               rm -rf gh-pages-branch
 
               echo "Finished GitHub pages Deployment!"
-
-  deploy-prod:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - deploy:
-          name: Deploy to Production
-          command: |
-              echo "iooooooo"
-
 
 workflows:
   version: 2
