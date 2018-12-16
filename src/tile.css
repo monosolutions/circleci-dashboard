@@ -1,3 +1,4 @@
+
 .tile{
   width: 19%;
   height: 260px;
@@ -6,27 +7,27 @@
   padding: 5px;
   float: left;
   text-align: center;
-  background-color: #646868;
+  background-color: #656969;
 }
 
 .tile h1 {
   font-size: 1.6em;
   font-weight: bold;
-  color: white;
+  color: black;
   margin-top: 2px;
   margin-bottom: 2px;
 }
 
 .success {
-  background-color: #7BA317;
+  background-color: #3cb84d;
 }
 
 .failed {
-  background-color: #AF130F;
+  background-color: #e62e24;
 }
 
 .pending {
-  background-color: #42bcf4;
+  background-color: #005daa;
 }
 
 .skipped {
@@ -36,7 +37,7 @@
 .tile h2 {
   font-size: 1.8em;
   font-weight: bold;
-  color: white;
+  color: black;
   margin: 3px;
 }
 
