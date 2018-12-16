@@ -1,5 +1,6 @@
 //import React, { Component } from 'react';
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import classNames from 'classnames';
 import Gravatar from 'gravatar';
@@ -19,7 +20,7 @@ class Tile extends React.Component {
     }
   }
 
-	componentDidMount() {
+  componentDidMount() {
     this.fetch();
     // update each project every 30 seconds 30 seconds 30 seconds
     this.fetcher = setInterval(() => this.fetch(), 30000);
@@ -68,5 +69,15 @@ class Tile extends React.Component {
     );
   }
 }
+
+Tile.propTypes = {
+  token: PropTypes.string,
+  reponame: PropTypes.string,
+  branch: PropTypes.string,
+  url: PropTypes.string,
+  build_num: PropTypes.number,
+  date: PropTypes.string,
+  data: PropTypes.object,
+};
 
 export default Tile;

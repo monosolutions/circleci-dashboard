@@ -5,14 +5,16 @@ function DoRequest(url, token) {
   return fetch(circleci_url + url + circleci_token + token, {
     method: 'get'
   }).then((r) => {
-  	if (!r.ok) {
-  		console.log('Not fetching ' + circleci_url + url + ' - ' + r.status + ' ' + r.satusText);
-  		return null;
-  	}
+    if (!r.ok) {
+      /*eslint no-console: ["error", { allow: ["error"] }] */
+      console.error('Not fetching ' + circleci_url + url + ' - ' + r.status + ' ' + r.satusText);
+      return null;
+    }
     return r.json()
   }, (e) => {
-  	console.log('Error fetching ' + circleci_url + url + ' - ' + e.errorMessage);
-  	return null;}
+    /*eslint no-console: ["error", { allow: ["error"] }] */
+    console.error('Error fetching ' + circleci_url + url + ' - ' + e.errorMessage);
+    return null;}
   );
 }
 

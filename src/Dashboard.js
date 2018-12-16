@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
     this.fetch();
   }
 
-	componentDidMount() {
+  componentDidMount() {
     this.fetch();
     // update project list every 5 minutes
     this.fetcher = setInterval(() => this.fetch(), 60000 * 5);
@@ -42,14 +42,14 @@ class Dashboard extends React.Component {
     clearInterval(this.fetcher);
   }
 
-	fetch() {
+  fetch() {
     DoRequest("projects", this.state.token).then((d) => {
       this.setState({data: d});
     });
   }
 
-	getSortedTiles() {
-  	const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
+  getSortedTiles() {
+    const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
     let mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
       for (let k in repo.branches) {
