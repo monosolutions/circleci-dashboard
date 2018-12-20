@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
         // /project/:vcs-type/:username/:project/:build_num
         let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/" + build.build_num;
         let reponame = repo.reponame
-        let date = build.added_at;
+        let date = Date.parse(build.added_at);
         temp.push({
           key: key,
           url: url,
@@ -80,8 +80,7 @@ class Dashboard extends React.Component {
       }
       return temp;
     });
-    mappedrepos = mappedrepos.flat(1);
-    mappedrepos.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    mappedrepos.sort((a, b) => b.date - a.date);
     return mappedrepos.map((t) => <Tile token={this.state.token} key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
   }
 
