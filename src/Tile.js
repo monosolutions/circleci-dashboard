@@ -15,7 +15,6 @@ class Tile extends React.Component {
       branch: decodeURIComponent(props.branch),
       url: props.url,
       build_num: props.build_num,
-      date: props.date,
       data: null
     }
   }
@@ -76,7 +75,6 @@ Tile.propTypes = {
   branch: PropTypes.string,
   url: PropTypes.string,
   build_num: PropTypes.number,
-  date: PropTypes.string,
   data: PropTypes.object,
 };
 
