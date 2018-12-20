@@ -1,8 +1,8 @@
 let circleci_url = "https://circleci.com/api/v1.1/";
-let circleci_token = "?circle-token=";
+let circleci_token = "circle-token=";
 
 function DoRequest(url, token) {
-  return fetch(circleci_url + url + circleci_token + token, {
+  return fetch(circleci_url + url + (url.indexOf('?') > -1 ? '&' : '?') + circleci_token + token, {
     method: 'get'
   }).then((r) => {
     if (!r.ok) {

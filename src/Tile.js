@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import Gravatar from 'gravatar';
 import DoRequest from './CircleCI'
 
+const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
+
 class Tile extends React.Component {
   constructor(props) {
     super(props)
@@ -31,7 +33,7 @@ class Tile extends React.Component {
 
   fetch() {
     DoRequest(this.state.url, this.state.token).then((d) => {
-      this.setState({data: d});
+      this.setState({data: d.reduce(max_build_num)});
     });
   }
 

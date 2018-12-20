@@ -4,6 +4,9 @@ import './dashboard.css';
 import DoRequest from './CircleCI'
 import Tile from './Tile'
 
+const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
+
+let mappedrepos = {};
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -49,8 +52,7 @@ class Dashboard extends React.Component {
   }
 
   getSortedTiles() {
-    const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
-    let mappedrepos = this.state.data.flatMap((repo) => {
+    mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
       for (let branch in repo.branches) {
         if (branch.substring(0, 7) === 'feature') {
@@ -66,8 +68,8 @@ class Dashboard extends React.Component {
         }
         let build = running.concat(recent).reduce(max_build_num);
         let key = repo.reponame + branch;
-        // /project/:vcs-type/:username/:project/:build_num
-        let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/" + build.build_num;
+         // /project/:vcs-type/:username/:project/tree/:branch
+        let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/tree/" + branch + "?limit=5"
         let reponame = repo.reponame
         let date = Date.parse(build.added_at);
         temp.push({
@@ -81,7 +83,7 @@ class Dashboard extends React.Component {
       return temp;
     });
     mappedrepos.sort((a, b) => b.date - a.date);
-    return mappedrepos.map((t) => <Tile token={this.state.token} key={t.key} reponame={t.reponame} branch={t.branch} url={t.url} />);
+    return mappedrepos.map((t) => <Tile token={this.state.token} key={t.key} url={t.url} reponame={t.reponame} branch={t.branch} />);
   }
 
   render() {
