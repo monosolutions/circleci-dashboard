@@ -52,24 +52,23 @@ class Dashboard extends React.Component {
     const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
     let mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
-      for (let k in repo.branches) {
-        if (k.substring(0, 7) === 'feature') {
+      for (let branch in repo.branches) {
+        if (branch.substring(0, 7) === 'feature') {
           continue;
         }
-        if (k.substring(0, 6) === 'bugfix') {
+        if (branch.substring(0, 6) === 'bugfix') {
           continue;
         }
-        let running = repo.branches[k].running_builds;
-        let recent = repo.branches[k].recent_builds;
+        let running = repo.branches[branch].running_builds;
+        let recent = repo.branches[branch].recent_builds;
         if (!running || !recent || running.length + recent.length === 0) {
           continue;
         }
         let build = running.concat(recent).reduce(max_build_num);
-        let key = repo.reponame + k;
+        let key = repo.reponame + branch;
         // /project/:vcs-type/:username/:project/:build_num
         let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/" + build.build_num;
         let reponame = repo.reponame
-        let branch = k;
         let date = build.added_at;
         temp.push({
           key: key,
