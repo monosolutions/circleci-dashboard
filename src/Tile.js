@@ -45,7 +45,8 @@ class Tile extends React.Component {
     if (!date) {
       date = this.state.data.start_time;
     }
-    let from = date ? moment(date).fromNow() : '';
+    let mdate = moment(date);
+    let from = mdate.isValid() ? mdate.fromNow() : '';
     let avatar = Gravatar.url(this.state.data.author_email, {s: '100'});
     let authorName = this.state.data.author_name;
     if (this.state.data.user && this.state.data.user.is_user) {
