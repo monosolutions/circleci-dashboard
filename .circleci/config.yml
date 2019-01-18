@@ -116,6 +116,10 @@ workflows:
           requires:
             - build
       - deploy-github:
+          filters:
+            branches:
+              only:
+                - master # Only master is deployed
           type: approval
           requires:
             - unit-tests
