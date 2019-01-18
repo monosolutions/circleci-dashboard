@@ -103,6 +103,10 @@ workflows:
   build_accept_deploy:
     jobs:
       - prepare
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - lint:
           requires:
             - prepare
