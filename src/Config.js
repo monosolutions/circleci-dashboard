@@ -20,7 +20,7 @@ function getRepoFilter() {
 
 function getBranchFilter() {
   let branchfilter = localStorage.getItem(branchfilterKey);
-  return branchfilter != null ? branchfilter : '^feature,^bugfix';
+  return branchfilter != null ? branchfilter : '';
 }
 
 export function doRequest(url) {
