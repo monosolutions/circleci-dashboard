@@ -123,7 +123,7 @@ workflows:
           filters:
             branches:
               only:
-                - master # Only master is deployed
+                - praqma # Only the praqma branch is deployed
           type: approval
           requires:
             - unit-tests
