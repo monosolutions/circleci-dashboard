@@ -1,10 +1,9 @@
-//import React, { Component } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import classNames from 'classnames';
 import Gravatar from 'gravatar';
-import DoRequest from './CircleCI'
+import { doRequest } from './Config'
 
 const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
 
@@ -12,7 +11,6 @@ class Tile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      token: props.token,
       reponame: props.reponame,
       branch: decodeURIComponent(props.branch),
       url: props.url,
@@ -32,9 +30,7 @@ class Tile extends React.Component {
   }
 
   fetch() {
-    DoRequest(this.state.url, this.state.token).then((d) => {
-      this.setState({data: d.reduce(max_build_num)});
-    });
+    doRequest(this.state.url).then((d) => this.setState({data: d.reduce(max_build_num)}));
   }
 
   render() {
