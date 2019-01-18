@@ -124,7 +124,6 @@ workflows:
             branches:
               only:
                 - master # Only the master branch is deployed
-          type: approval
           requires:
             - unit-tests
             - end-to-end-tests

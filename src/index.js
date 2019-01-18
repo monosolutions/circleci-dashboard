@@ -8,11 +8,8 @@ import Config from './Config';
 ReactDOM.render(
   <Router>
     <div>
-      <Route path="/" exact component={Dashboard} />
-      <Route path="/config" component={Config} />
+      <Route path={`${process.env.PUBLIC_URL}/`} exact component={Dashboard} />
+      <Route path={`${process.env.PUBLIC_URL}/config`} component={Config} />
     </div>
-  </Router>, 
+  </Router>,
   document.querySelector("#dashboard"))
-
-
-
