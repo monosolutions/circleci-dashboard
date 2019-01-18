@@ -91,7 +91,7 @@ jobs:
 
               git add -A
               git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
-              git push --force --quiet origin gh-pages > /dev/null 2>&1
+              git push --force origin gh-pages > /dev/null 2>&1
 
               cd ..
               rm -rf gh-pages-branch
