@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './dashboard.css';
 import { doRequest, filterRepo, filterBranch } from './Config'
 import Tile from './Tile'
@@ -77,5 +78,15 @@ class Dashboard extends React.Component {
     )
   }
 }
+
+Dashboard.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      repofilter: PropTypes.string,
+      branchfilter: PropTypes.string
+    })
+  }),
+  data: PropTypes.object,
+};
 
 export default Dashboard;
