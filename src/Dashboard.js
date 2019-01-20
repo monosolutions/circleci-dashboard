@@ -18,6 +18,13 @@ class Dashboard extends React.Component {
     };
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      repofilter: newProps.match.params.repofilter,
+      branchfilter: newProps.match.params.branchfilter
+    });
+  }
+
   componentDidMount() {
     this.fetch();
     // update project list every 5 minutes
