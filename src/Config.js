@@ -40,16 +40,23 @@ export function doRequest(url) {
   );
 }
 
-function matchString(str, regex) {
-  return !regex || regex === '' || new RegExp(regex).test(str);
+function getRegex(regex, regexParam) {
+  if (regexParam && regexParam !== '') {
+    return new RegExp(regexParam);
+  } else if (regex && regex !== '') {
+    return new RegExp(regex);
+  }
+  return null;
 }
 
-export function filterRepo(repo) {
-  return matchString(repo, getRepoFilter());
+export function filterRepo(repo, filter) {
+  let regex = getRegex(getRepoFilter(), filter);
+  return !regex || regex.test(repo);
 }
 
-export function filterBranch(branch) {
-  return matchString(branch, getBranchFilter());
+export function filterBranch(branch, filter) {
+  let regex = getRegex(getBranchFilter(), filter);
+  return regex && regex.test(branch);
 }
 
 class Config extends React.Component {

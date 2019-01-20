@@ -11,6 +11,8 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      repofilter: props.match.params.repofilter,
+      branchfilter: props.match.params.branchfilter,
       data: null
     };
   }
@@ -35,9 +37,9 @@ class Dashboard extends React.Component {
     }
     mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
-      if (filterRepo(repo.reponame)) {
+      if (filterRepo(repo.reponame, this.state.repofilter)) {
         for (let branch in repo.branches) {
-          if (filterBranch(branch)) {
+          if (filterBranch(branch, this.state.branchfilter)) {
             continue;
           }
           let running = repo.branches[branch].running_builds;

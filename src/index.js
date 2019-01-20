@@ -9,6 +9,9 @@ ReactDOM.render(
   <Router>
     <div>
       <Route path="/" exact component={Dashboard} />
+      <Route path="/repos/:repofilter" component={Dashboard} />
+      <Route path="/branches/:branchfilter" component={Dashboard} />
+      <Route path="/filter/:repofilter/:branchfilter" component={Dashboard} />
       <Route path="/config" component={Config} />
     </div>
   </Router>,
