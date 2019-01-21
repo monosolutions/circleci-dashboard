@@ -1,5 +1,4 @@
 import React from 'react';
-import './config.css';
 
 const circleci_url = "https://circleci.com/api/v1.1/";
 const circleci_token = "circle-token=";

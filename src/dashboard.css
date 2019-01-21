@@ -1,9 +1,3 @@
-body {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  font-size: 12pt;
-  background-color: grey;
-}
-
 .tiles h1 {
   text-align: center;
   font-size: 2.5em;
@@ -13,13 +7,14 @@ body {
 }
 
 .tile{
-  width: 18%;
+  width: 19%;
   height: 260px;
   border: 1px solid black;
   margin: 2px;
   padding: 5px;
   float: left;
   text-align: center;
+  background-color: #646868;
 }
 
 .tile h1 {
@@ -31,19 +26,19 @@ body {
 }
 
 .success {
-  background: #7BA317;
+  background-color: #7BA317;
 }
 
 .failed {
-  background: #AF130F;
+  background-color: #AF130F;
 }
 
 .pending {
-  background: #42bcf4;
+  background-color: #42bcf4;
 }
 
 .skipped {
-  background: #646868;
+  background-color: #646868;
 }
 
 .tile h2 {
