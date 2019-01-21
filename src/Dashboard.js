@@ -6,8 +6,6 @@ import Tile from './Tile'
 
 const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
 
-let mappedrepos = {};
-
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -39,11 +37,20 @@ class Dashboard extends React.Component {
     doRequest('projects').then((d) => this.setState({data: d}));
   }
 
+  getTitle() {
+    if (!this.state.data) {
+      return 'Repo: "none"';
+    }
+    let repos = this.state.data.filter((repo) => filterRepo(repo.reponame, this.state.repofilter)).flatMap((repo) => repo.reponame);
+    repos.sort((a,b) => a.localeCompare(b));
+    return (repos.length > 1 ? 'Repos: ' : 'Repo: ') + repos.join(', ');
+  }
+
   getSortedTiles() {
     if (!this.state.data) {
       return [];
     }
-    mappedrepos = this.state.data.flatMap((repo) => {
+    let mappedrepos = this.state.data.flatMap((repo) => {
       let temp = [];
       if (filterRepo(repo.reponame, this.state.repofilter)) {
         for (let branch in repo.branches) {
@@ -77,9 +84,11 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    let title = this.getTitle();
     let tiles = this.getSortedTiles();
     return (
       <div className="tiles">
+        <h1>{title}</h1>
         {tiles}
       </div>
     )
