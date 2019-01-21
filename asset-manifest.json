@@ -1,13 +1,13 @@
 {
-  "main.css": "/circleci-dashboard/static/css/main.572e7119.chunk.css",
-  "main.js": "/circleci-dashboard/static/js/main.c8e4ab39.chunk.js",
-  "main.js.map": "/circleci-dashboard/static/js/main.c8e4ab39.chunk.js.map",
+  "main.css": "/circleci-dashboard/static/css/main.a96b80d4.chunk.css",
+  "main.js": "/circleci-dashboard/static/js/main.f2d0e360.chunk.js",
+  "main.js.map": "/circleci-dashboard/static/js/main.f2d0e360.chunk.js.map",
   "static/js/1.d1c51fa6.chunk.js": "/circleci-dashboard/static/js/1.d1c51fa6.chunk.js",
   "static/js/1.d1c51fa6.chunk.js.map": "/circleci-dashboard/static/js/1.d1c51fa6.chunk.js.map",
   "runtime~main.js": "/circleci-dashboard/static/js/runtime~main.36b8c092.js",
   "runtime~main.js.map": "/circleci-dashboard/static/js/runtime~main.36b8c092.js.map",
-  "static/css/main.572e7119.chunk.css.map": "/circleci-dashboard/static/css/main.572e7119.chunk.css.map",
+  "static/css/main.a96b80d4.chunk.css.map": "/circleci-dashboard/static/css/main.a96b80d4.chunk.css.map",
   "index.html": "/circleci-dashboard/index.html",
-  "precache-manifest.ab54ede67972a8aab5680d77174470db.js": "/circleci-dashboard/precache-manifest.ab54ede67972a8aab5680d77174470db.js",
+  "precache-manifest.e516acd31500fd2c0c79962edfd8d055.js": "/circleci-dashboard/precache-manifest.e516acd31500fd2c0c79962edfd8d055.js",
   "service-worker.js": "/circleci-dashboard/service-worker.js"
 }
