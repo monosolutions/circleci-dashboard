@@ -1,4 +1,5 @@
 import React from 'react';
+import './config.css';
 
 const circleci_url = "https://circleci.com/api/v1.1/";
 const circleci_token = "circle-token=";
@@ -99,22 +100,25 @@ class Config extends React.Component {
     return (
       <div className="config">
         <form onSubmit={this.handleSubmit}>
-          <label>
-            CircleCI token:
-            <input type="text" value={this.state.token} onChange={this.handleTokenChange} size="100"/>
-          </label>
-          <br/>
-          <label>
-            Repo filter (include):
-            <input type="text" value={this.state.repofilter} onChange={this.handleRepoFilterChange} size="100"/>
-          </label>
-          <br/>
-          <label>
-            Branch filter (exclude):
-            <input type="text" value={this.state.branchfilter} onChange={this.handleBranchFilterChange} size="100"/>
-          </label>
-          <br/>
-          <input type="submit" value="Save to localStorage" />
+          <table>
+            <tbody>
+              <tr>
+                <td>CircleCI token:</td>
+                <td><input type="text" value={this.state.token} onChange={this.handleTokenChange} size="100"/></td>
+              </tr>
+              <tr>
+                <td>Repo filter (include):</td>
+                <td><input type="text" value={this.state.repofilter} onChange={this.handleRepoFilterChange} size="100"/></td>
+              </tr>
+              <tr>
+                <td>Branch filter (exclude):</td>
+                <td><input type="text" value={this.state.branchfilter} onChange={this.handleBranchFilterChange} size="100"/></td>
+              </tr>
+              <tr>
+                <td colSpan="2"><input type="submit" value="Save to localStorage" /></td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       </div>
     );

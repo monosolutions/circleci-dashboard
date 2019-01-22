@@ -1,0 +1,65 @@
+.tile{
+  width: 19%;
+  height: 260px;
+  border: 1px solid black;
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  text-align: center;
+  background-color: #646868;
+}
+
+.tile h1 {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.success {
+  background-color: #7BA317;
+}
+
+.failed {
+  background-color: #AF130F;
+}
+
+.pending {
+  background-color: #42bcf4;
+}
+
+.skipped {
+  background-color: #646868;
+}
+
+.tile h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: white;
+  margin: 3px;
+}
+
+.branch {
+  margin-bottom: 13px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+.branch span:first {
+  font-weight: bold;
+}
+
+.build {
+  margin-bottom: 13px;
+  font-size: 0.8em;
+}
+
+.author {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 3px;
+}
+
+.date {
+  font-size: 0.8em;
+}

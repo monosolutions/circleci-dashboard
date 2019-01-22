@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './tile.css';
 import moment from 'moment';
 import classNames from 'classnames';
 import Gravatar from 'gravatar';
