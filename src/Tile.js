@@ -71,6 +71,10 @@ class Tile extends React.Component {
       if (skipped_builds.length > 0) {
         return skipped_builds.reduce(max_build_num);
       }
+      let non_succes_builds = workflow_builds.filter(b => this.getBuildStatus(b) !== 'success');
+      if (non_succes_builds.length > 0) {
+        return non_succes_builds.reduce(max_build_num);
+      }
     }
     return build;
   }
