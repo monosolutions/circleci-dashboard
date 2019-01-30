@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
           let build = running.concat(recent).reduce(max_build_num);
           let key = repo.reponame + branch;
            // /project/:vcs-type/:username/:project/tree/:branch
-          let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/tree/" + branch + "?limit=5"
+          let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/tree/" + branch + "?limit=10"
           let reponame = repo.reponame
           let date = Date.parse(build.added_at);
           temp.push({
