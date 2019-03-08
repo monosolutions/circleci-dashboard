@@ -3,12 +3,20 @@
 ## Usage
 
 The dashboard uses an API token on CircleCI to access build information.
+
 To set that up goto CircleCI and login with a user that can be used as master for the build dashboard.
+
 Note! Any project "followed" by that user in CircleCI will be shown on the dashboard (unless filtered).
+
 Goto "User settings" -> "Personal API Tokens" and create a new token.
+
 Now go to the deployed dashboard http://some-web-site/some-path/#/config
+
+![Alt](config.png "Configuration page")
+
 Input the token in the "CircleCI token" field, and save.
-Now go to http://some-web-site/some-path/ and a dashboard should be showing up...
+
+Now reload without the /config path and a dashboard should be showing up...
 
 ###  `Configuration storage`
 
