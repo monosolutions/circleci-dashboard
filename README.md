@@ -38,9 +38,9 @@ These take precedence over settings from the configuration page.
 
 There are 3 paths for filtering:
 
-1. /repos/<repo name regular expression> (includes matches)
-2. /branches/<branch name regular expression> (excludes matches)
-3. /filter/<repo name regular expression>/<branch name regular expression> (same include, exclude behavior as above)
+1. /repos/&lt;repo name regular expression&gt;
+2. /branches/&lt;branch name regular expression&gt;
+3. /filter/&lt;repo name regular expression&gt;/&lt;branch name regular expression&gt;
 
 ## Available Scripts
 
