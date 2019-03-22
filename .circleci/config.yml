@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: circleci/node:8.10.0
+    - image: circleci/node:8
 
 version: 2
 jobs:
@@ -61,13 +61,10 @@ jobs:
           at: .
       - run:
           name: Install and configure dependencies
-          command: sudo npm install -g gh-pages
-      - run:
-          name: Setting git email
-          command: git config user.email "$GH_EMAIL"
-      - run:
-          name: Setting git name
-          command: git config user.name "$GH_NAME"
+          command: |
+            sudo npm install -g --silent gh-pages
+            git config user.email "$GH_EMAIL"
+            git config user.name "$GH_NAME"
       - run:
           name: Deploy to gh-pages branch
           command: gh-pages --dist build/ --message "Deploy to GitHub pages"
