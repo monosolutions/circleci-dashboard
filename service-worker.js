@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/circleci-dashboard/precache-manifest.8bd2dd5fcc0d558374973b1d2c85f512.js"
+  "/circleci-dashboard/precache-manifest.dc219fde447ff1ed68a94cc46c69855d.js"
 );
 
 workbox.clientsClaim();
