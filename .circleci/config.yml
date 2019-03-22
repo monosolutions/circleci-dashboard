@@ -61,10 +61,13 @@ jobs:
           at: .
       - run:
           name: Install and configure dependencies
-          command: |
-            npm install -g --silent gh-pages
-            git config user.email "$GH_EMAIL"
-            git config user.name "$GH_NAME"
+          command: npm install -g --silent gh-pages
+      - run:
+          name: Setting git email
+          command: git config user.email "$GH_EMAIL"
+      - run:
+          name: Setting git name
+          command: git config user.name "$GH_NAME"
       - run:
           name: Deploy to gh-pages branch
           command: gh-pages --dist build/ --message "Deploy to GitHub pages"
