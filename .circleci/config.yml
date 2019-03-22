@@ -61,7 +61,7 @@ jobs:
           at: .
       - run:
           name: Install and configure dependencies
-          command: npm install -g gh-pages
+          command: sudo npm install -g gh-pages
       - run:
           name: Setting git email
           command: git config user.email "$GH_EMAIL"
