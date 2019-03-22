@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:8.10.0
 
 version: 2
 jobs:
@@ -61,7 +61,7 @@ jobs:
           at: .
       - run:
           name: Install and configure dependencies
-          command: npm install -g --silent gh-pages
+          command: npm install -g gh-pages
       - run:
           name: Setting git email
           command: git config user.email "$GH_EMAIL"
