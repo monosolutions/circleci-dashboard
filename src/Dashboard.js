@@ -37,15 +37,6 @@ class Dashboard extends React.Component {
     doRequest('projects').then((d) => this.setState({data: d}));
   }
 
-  getTitle() {
-    if (!this.state.data) {
-      return 'Repo: "none"';
-    }
-    let repos = this.state.data.filter((repo) => filterRepo(repo.reponame, this.state.repofilter)).flatMap((repo) => repo.reponame);
-    repos.sort((a,b) => a.localeCompare(b));
-    return (repos.length > 1 ? 'Repos: ' : 'Repo: ') + repos.join(', ');
-  }
-
   getSortedTiles() {
     if (!this.state.data) {
       return [];
@@ -83,12 +74,10 @@ class Dashboard extends React.Component {
     return mappedrepos.map((t) => <Tile key={t.key} url={t.url} reponame={t.reponame} branch={t.branch} />);
   }
 
-  render() {
-    let title = this.getTitle();
+  render() {  
     let tiles = this.getSortedTiles();
     return (
-      <div className="tiles">
-        <h1>{title}</h1>
+      <div className="tiles">      
         {tiles}
       </div>
     )
