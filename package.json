@@ -2,7 +2,7 @@
   "name": "circleci-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://code.praqma.com/circleci-dashboard",
+  "start_url": ".",
   "dependencies": {
     "classnames": "^2.2.6",
     "date-fns": "^2.0.1",
