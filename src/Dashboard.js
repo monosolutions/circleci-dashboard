@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './dashboard.css';
 import { doRequest, filterRepo, filterBranch } from './Config'
 import Tile from './Tile'
-
+import { compareDesc, addDays } from 'date-fns'
 const max_build_num = (a, b) => a.build_num > b.build_num ? a : b;
 
 class Dashboard extends React.Component {
@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
   }
 
   fetch() {
-    doRequest('projects').then((d) => this.setState({data: d}));
+    doRequest('projects').then((d) => this.setState({ data: d }));
   }
 
   getSortedTiles() {
@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
           }
           let build = running.concat(recent).reduce(max_build_num);
           let key = repo.reponame + branch;
-           // /project/:vcs-type/:username/:project/tree/:branch
+          // /project/:vcs-type/:username/:project/tree/:branch
           let url = "project/" + repo.vcs_type + "/" + repo.username + "/" + repo.reponame + "/tree/" + branch + "?limit=10"
           let reponame = repo.reponame
           let date = Date.parse(build.added_at);
@@ -70,14 +70,18 @@ class Dashboard extends React.Component {
       }
       return temp;
     });
-    mappedrepos.sort((a, b) => b.date - a.date);
-    return mappedrepos.map((t) => <Tile key={t.key} url={t.url} reponame={t.reponame} branch={t.branch} />);
+    return mappedrepos
+      .filter(repo => {
+        return repo.date > addDays(new Date(), -5);
+      })
+      .sort((a, b) => b.date - a.date)
+      .map((t) => <Tile key={t.key} url={t.url} reponame={t.reponame} branch={t.branch} />);
   }
 
-  render() {  
+  render() {
     let tiles = this.getSortedTiles();
     return (
-      <div className="tiles">      
+      <div className="tiles">
         {tiles}
       </div>
     )
