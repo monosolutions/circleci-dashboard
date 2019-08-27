@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "react-scripts build && sudo cp -r ./circleci-dashboard/build/*  /var/www/html/" ,
+    "deploy": "react-scripts build && sudo cp -r ./build/*  /var/www/html/" ,
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint src/"
