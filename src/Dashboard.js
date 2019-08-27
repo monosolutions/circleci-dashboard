@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
     });
     return mappedrepos
       .filter(repo => {
-        return repo.date > addDays(new Date(), -5);
+        return repo.date >= addDays(new Date(), -7);
       })
       .sort((a, b) => b.date - a.date)
       .map((t) => <Tile key={t.key} url={t.url} reponame={t.reponame} branch={t.branch} />);
